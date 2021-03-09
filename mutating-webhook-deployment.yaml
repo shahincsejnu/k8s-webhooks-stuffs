@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mutator-deployment
+  labels:
+    app: mutator-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mutator-pod
+  template:
+    metadata:
+      labels:
+        app: mutator-pod
+    spec:
+      containers:
+        - name: mutator-container
+          image: shahincsejnu/mutator-webhook:v1.0.4
+          ports:
+            - containerPort: 8443
