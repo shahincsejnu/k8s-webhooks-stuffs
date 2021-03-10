@@ -57,9 +57,9 @@ func (s Server) postWebhook(w http.ResponseWriter, r *http.Request) {
 	// add label if we're creating a pod
 	if request.Request.Kind.Group == "shahin.oka.com" && request.Request.Kind.Version == "v1alpha1" && request.Request.Kind.Kind == "Teployment" && request.Request.Operation == "CREATE" {
 		// if there is a path till /metadata/labels this one will work
-		patch := `[{"op": "add", "path": "/metadata/labels/myExtraLabel", "value": "webhook-was-here"}]`
+		//patch := `[{"op": "add", "path": "/metadata/labels/myExtraLabel", "value": "webhook-was-here"}]`
 		// if need also create the labels then add myExtraLabel then this one
-		// patch := `[{"op": "add", "path": "/metadata/labels", "value": {"myExtraLabel": "webhook-was-here"}}]`
+		patch := `[{"op": "add", "path": "/metadata/labels", "value": {"myExtraLabel": "webhook-was-here"}}]`
 		patchEnc := base64.StdEncoding.EncodeToString([]byte(patch))
 		response.Response.PatchType = "JSONPatch"
 		response.Response.Patch = patchEnc
