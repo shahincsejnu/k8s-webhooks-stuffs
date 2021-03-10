@@ -4,7 +4,7 @@ WORKDIR /go/src/github.com/shahincsejnu/k8s-webhooks-stuffs
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o mutator-hook *.go
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o webhook *.go
 
 
 FROM alpine:latest
@@ -19,4 +19,4 @@ COPY --from=go-builder /go/src/github.com/shahincsejnu/k8s-webhooks-stuffs .
 
 USER app
 
-CMD ["./mutator-hook"]
+CMD ["./webhook"]

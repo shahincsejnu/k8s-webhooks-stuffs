@@ -1,7 +1,9 @@
 apiVersion: shahin.oka.com/v1alpha1
 kind: Teployment
 metadata:
-  name: teployment-with-mutating-webhook
+  name: teployment-with-webhook
+  labels:
+    app: test
 spec:
   replicas: 3
   serviceType: NodePort

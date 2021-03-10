@@ -62,6 +62,7 @@ type Options struct {
 }
 type Request struct {
 	UID                string          `json:"uid"`
+	Metadata           Metadata        `json:"metadata"`
 	Kind               Kind            `json:"kind"`
 	Resource           Resource        `json:"resource"`
 	SubResource        string          `json:"subResource"`
@@ -76,4 +77,9 @@ type Request struct {
 	OldObject          OldObject       `json:"oldObject"`
 	Options            Options         `json:"options"`
 	DryRun             bool            `json:"dryRun"`
+}
+
+type Metadata struct {
+	Name string `json:"name"`
+	Labels map[string]string `json:"labels"`
 }

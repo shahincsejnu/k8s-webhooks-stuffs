@@ -19,8 +19,9 @@
 
 ```
 kubectl apply -f mutating-webhook-configuration.yaml
-kubectl apply -f mutating-webhook-deployment.yaml
-kubectl apply -f mutating-webhook-service.yaml
+kubectl apply -f validating-webhook-configuration.yaml
+kubectl apply -f webhook-deployment.yaml
+kubectl apply -f webhook-service.yaml
 ```
 
 ## Set Up the CA Certificate
@@ -35,13 +36,14 @@ kubectl apply -f mutating-webhook-service.yaml
 - The output of this command should replace the base64 string in caBundle in mutating-webhook-configuration.yaml:
 
     ```
-    caBundle: "<pre_string>"  # <= replace this string within quotes
+    caBundle: "<pre_string>"  # <= replace this string within quotes from both "mutating-webhook-configuration.yaml" and "validating-webhook-configuration.yaml"
     ```
 
 - Then re-apply the webhook again:
 
     ```
     kubectl apply -f mutating-webhook-configuration.yaml
+    kubectl apply -f validating-webhook-configuration.yaml
     ```
   
 - Now apply the teployment object:
@@ -60,3 +62,4 @@ kubectl apply -f mutating-webhook-service.yaml
 - [x] https://github.com/morvencao/kube-mutating-webhook-tutorial
 - [x] https://github.com/morvencao/kube-mutating-webhook-tutorial/blob/master/medium-article.md
 - [x] https://medium.com/swlh/kubernetes-validating-webhook-implementation-60f3352b66a
+- [x] https://github.com/wardviaene/kubernetes-course/tree/master/mutatingwebhook

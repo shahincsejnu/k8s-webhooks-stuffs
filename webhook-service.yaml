@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mutator-svc
+  name: webhook-svc
 spec:
   selector:
-    app: mutator-pod
+    app: webhook-pod
   ports:
     - protocol: TCP
       port: 443

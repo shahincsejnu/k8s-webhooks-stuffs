@@ -46,7 +46,8 @@ func main() {
 	// start TLS server
 	fmt.Printf("Starting TLS server on :8443\n")
 	handler := http.NewServeMux()
-	handler.HandleFunc("/webhook", s.postWebhook)
+	handler.HandleFunc("/mutator", s.postMutator)
+	handler.HandleFunc("/validator", s.postValidator)
 
 	https := &http.Server{
 		Addr:      ":8443",
@@ -121,7 +122,7 @@ func certsetup() (serverTLSConf *tls.Config, clientTLSConf *tls.Config, caPEMByt
 		SubjectKeyId: []byte{1, 2, 3, 4, 6},
 		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:     x509.KeyUsageDigitalSignature,
-		DNSNames:     []string{"mutator-svc.default.svc"},
+		DNSNames:     []string{"webhook-svc.default.svc"},
 	}
 
 	certPrivKey, err := rsa.GenerateKey(rand.Reader, 4096)
