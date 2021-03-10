@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: mutator-container
-          image: shahincsejnu/mutator-webhook:v1.0.4
+          image: shahincsejnu/mutator-webhook:v1.0.5
           ports:
             - containerPort: 8443
