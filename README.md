@@ -1,5 +1,15 @@
 # k8s-webhooks-stuffs
 
+- Admission webhooks are HTTP callbacks that receive admission requests and do something with them. You can define two types of admission webhooks, validating admission webhook and mutating admission webhook. Mutating admission webhooks are invoked first, and can modify objects sent to the API server to enforce custom defaults. After all object modifications are complete, and after the incoming object is validated by the API server, validating admission webhooks are invoked and can reject requests to enforce custom policies.
+
+- Mutating Webhook:
+
+- Validating Webhook:
+    - A validating webhook is an endpoint Kubernetes can invoke prior to persisting resources in ETCD. This endpoint should return a structured response indicating whether the resource should be rejected or accepted and persisted to the datastore.
+
+- The Flow:
+    - ![Overall Flow](/home/sahadat/Pictures/hook.jpeg?raw=true "Total Flow")
+
 ## This project docker image
 
 - For the images of this project you can see this dockerhub [repo](https://hub.docker.com/repository/docker/shahincsejnu/mutator-webhook)
@@ -38,3 +48,15 @@ kubectl apply -f mutating-webhook-service.yaml
     ```
     kc apply -f teployment-obj.yaml
     ```
+  
+  
+
+# Resources
+
+- [x] https://www.youtube.com/watch?v=Eb9pMSCTDjI&t=1709s
+- [x] https://github.com/kubernetes/api/blob/master/admissionregistration/v1/types.go
+- [x] https://github.com/kubernetes/api/blob/master/admission/v1/types.go
+- [x] https://www.youtube.com/watch?v=P7QAfjdbogY
+- [x] https://github.com/morvencao/kube-mutating-webhook-tutorial
+- [x] https://github.com/morvencao/kube-mutating-webhook-tutorial/blob/master/medium-article.md
+- [x] https://medium.com/swlh/kubernetes-validating-webhook-implementation-60f3352b66a
