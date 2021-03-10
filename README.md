@@ -8,7 +8,7 @@
     - A validating webhook is an endpoint Kubernetes can invoke prior to persisting resources in ETCD. This endpoint should return a structured response indicating whether the resource should be rejected or accepted and persisted to the datastore.
 
 - The Flow:
-    - ![The Flow](github.com/shahincsejnu/k8s-webhooks-stuffs/pictures/hook.jpeg)
+    - <img src="./pictures/hook.jpeg" />
 
 ## This project docker image
 
